@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkhu1av5f2cxx"]
+
+[ext_resource type="Texture2D" uid="uid://c1f38huj8bau7" path="res://ZeldaOverworldMapQ1BG.png" id="1_a4xrf"]
+[ext_resource type="PackedScene" uid="uid://dp4tkwatqwuos" path="res://player.tscn" id="2_y76gq"]
+
+[node name="overworld" type="Node2D"]
+
+[node name="ZeldaOverworldMapQ1bg" type="Sprite2D" parent="."]
+position = Vector2(2049, 704)
+texture = ExtResource("1_a4xrf")
+
+[node name="player" parent="." instance=ExtResource("2_y76gq")]
+position = Vector2(28, 27)
