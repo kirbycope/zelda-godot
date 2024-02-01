@@ -1247,7 +1247,6 @@ sources/0 = SubResource("TileSetAtlasSource_wwx7f")
 [node name="overworld" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 tile_set = SubResource("TileSet_bqaam")
 format = 2
 layer_0/name = "ground"
