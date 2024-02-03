@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dkhu1av5f2cxx"]
+[gd_scene load_steps=22 format=3 uid="uid://dkhu1av5f2cxx"]
 
 [ext_resource type="Texture2D" uid="uid://c1f38huj8bau7" path="res://ZeldaOverworldMapQ1BG.png" id="1_a4xrf"]
 [ext_resource type="Texture2D" uid="uid://d2jpsmjl48unn" path="res://8375_001.png" id="1_m5g04"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cayf54bun4upk" path="res://Q1BG_001.png" id="6_msjba"]
 [ext_resource type="Texture2D" uid="uid://d2pfuiqlolb6r" path="res://Q1BG_002.png" id="7_pqjpd"]
 [ext_resource type="AudioStream" uid="uid://ctgcdhamjf18" path="res://02 Overworld BGM.mp3" id="11_pbdl3"]
+[ext_resource type="PackedScene" uid="uid://o1yweho5vi5d" path="res://enemy.tscn" id="12_s6xrf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwx7f"]
 texture = ExtResource("1_rep1l")
@@ -1272,3 +1273,6 @@ limit_bottom = 1408
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_pbdl3")
 autoplay = true
+
+[node name="enemy" parent="." instance=ExtResource("12_s6xrf")]
+position = Vector2(1869, 1343)
