@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dp4tkwatqwuos"]
+[gd_scene load_steps=15 format=3 uid="uid://dp4tkwatqwuos"]
 
 [ext_resource type="Texture2D" uid="uid://ddlygcm8es2ld" path="res://8366_001.png" id="1_agof4"]
 [ext_resource type="Script" path="res://player.gd" id="1_kptyh"]
@@ -103,6 +103,8 @@ animations = [{
 radius = 5.0
 height = 10.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0yku"]
+
 [node name="player" type="CharacterBody2D"]
 collision_mask = 3
 script = ExtResource("1_kptyh")
@@ -115,3 +117,8 @@ autoplay = "idle_down"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_m5ssv")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_j0yku")
