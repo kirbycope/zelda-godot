@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn5d6nqhd32au"]
+
+[ext_resource type="Texture2D" uid="uid://owbhdaw54oll" path="res://cave.png" id="1_rtrwe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_km4c7"]
+atlas = ExtResource("1_rtrwe")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ykx0h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_km4c7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="man" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ykx0h")
+autoplay = "default"
