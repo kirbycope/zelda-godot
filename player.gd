@@ -1,74 +1,105 @@
+# Extending the CharacterBody2D class to create a custom player character
 extends CharacterBody2D
 
-# Declare a variable 'speed' to control the movement speed of the character in pixels per second.
-# This value can be adjusted to make the character move faster or slower.
-var speed = 100
-
-# Declare a variable 'last_direction' to keep track of the last direction of movement.
-# This is used to determine which idle animation to play when the character stops moving.
-var last_direction = Vector2.ZERO
-
-# Declare a variable 'animated_sprite' to reference the AnimatedSprite2D node.
-# This will allow us to control the character's animations.
-var animated_sprite
-
-# The _ready function is called when the node is added to the scene.
-# It's a good place to initialize variables and set up references to other nodes.
+# Declare variables for movement speed, last direction, animated sprite, and enemy detection
+var speed = 100 # Movement speed of the player
+var last_direction = Vector2.RIGHT # Default direction the player is facing (right)
+var animated_sprite # Reference to the animated sprite node
+var enemy_in_range = false # Flag to track if an enemy is within range
+var health = 100
+var is_dead = false # Flag to track if the player is dead
+var is_attacking = false
+var attack_timer = 0.0
+var attack_duration = 0.5 # Time in seconds
+# _ready function is called when the node is added to the scene
 func _ready():
-	# Assign the AnimatedSprite2D node to the 'animated_sprite' variable.
-	# This allows us to control the animations of the character.
-	animated_sprite = $AnimatedSprite2D
-
-# The _physics_process function is called every physics frame (typically 60 times per second).
-# This is where we handle movement and other physics-related logic.
+	animated_sprite = $AnimatedSprite2D # Reference to the AnimatedSprite2D node
+	add_to_group("Player") # Add the player to the "Player" group
+	
 func _physics_process(delta):
-	# Get the direction of movement based on the arrow keys pressed.
-	# The direction is represented as a Vector2, where:
-	# - X is -1 if "left" is pressed, 1 if "right" is pressed, and 0 otherwise.
-	# - Y is -1 if "up" is pressed, 1 if "down" is pressed, and 0 otherwise.
-	# This allows us to determine which direction the player wants the character to move.
+	update_health()
+	die()
+	update_animation()
+	move_and_slide()
+	
+	if is_attacking:
+		attack_timer += delta
+		if attack_timer >= attack_duration:
+			is_attacking = false
+			attack_timer = 0.0
+
+	
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	if health >= 100:
+		healthbar.visible = false
+	else: 
+		healthbar.visible = true
+	
+func update_animation():
+	if is_dead:
+		return # If the player is dead, exit the function and don't change the animation
+	
+	if is_attacking:
+		if last_direction.y < 0:
+			animated_sprite.play("attack_up")
+		elif last_direction.y > 0:
+			animated_sprite.play("attack_down")
+		elif last_direction.x != 0:
+			animated_sprite.play("attack_right")
+		return
+		
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
-	# Calculate the velocity by multiplying the direction by the speed.
-	# The velocity determines how fast and in which direction the character will move.
-	# This ensures that the character moves at a consistent speed in any direction.
-	velocity = direction * speed
-
-	# If the character is moving (direction is not zero), update the last_direction variable.
-	# This helps us remember the last direction the character was moving, even after they stop.
+	velocity = direction * speed # Calculate velocity based on input and speed
+	
+	# Update the last direction if the player is moving
 	if direction != Vector2.ZERO:
-		last_direction = direction
-
-	# Determine the walking animation to play based on the direction.
-	# Play the right walking animation if moving left or right.
-	# Play the up walking animation if moving up.
-	# Play the down walking animation if moving down.
-	# This ensures that the character's appearance matches the direction of movement.
+		last_direction = direction.normalized()
+		
+	# Animation handling based on movement direction
 	if direction.x != 0:
-		animated_sprite.play("walk_right")
+		animated_sprite.play("walk_right") # Play walking right animation
 	elif direction.y < 0:
-		animated_sprite.play("walk_up")
+		animated_sprite.play("walk_up") # Play walking up animation
 	elif direction.y > 0:
-		animated_sprite.play("walk_down")
-	else:
-		# If the character is not moving, play the idle animation based on the last direction of movement.
-		# Play the right idle animation if the last movement was left or right.
-		# Play the up idle animation if the last movement was up.
-		# Play the down idle animation if the last movement was down.
-		# This gives the character a natural appearance when they stop moving.
+		animated_sprite.play("walk_down") # Play walking down animation
+	elif direction == Vector2.ZERO:
+		# Play idle animations based on the last direction the player was facing
 		if last_direction.x != 0:
 			animated_sprite.play("idle_right")
 		elif last_direction.y < 0:
 			animated_sprite.play("idle_up")
 		elif last_direction.y > 0:
 			animated_sprite.play("idle_down")
-
-	# Flip the sprite horizontally if the last x direction was left.
-	# This allows us to use the same animation for both left and right directions.
-	# It's a clever way to save memory and reduce the number of animations needed.
+	
+	# Flip the sprite horizontally if the player is facing left
 	animated_sprite.flip_h = last_direction.x < 0
 
-	# Move the character using the calculated velocity.
-	# The move_and_slide method handles collisions and slides the character along obstacles if necessary.
-	# This ensures smooth movement and prevents the character from getting stuck in walls or other objects.
-	move_and_slide()
+func _input(event):
+	if event.is_action_pressed("ui_select"): # Assuming "ui_select" is mapped to the space bar
+		is_attacking = true
+		attack_timer = 0.0
+
+func die():
+	if health <= 0 and not is_dead:
+		is_dead = true
+		animated_sprite.play("die")
+
+func _on_hitbox_body_entered(body):
+	if body.is_in_group("Enemy"):
+		enemy_in_range = true # Set enemy detection flag to true
+		print("Getting Swooped!") # Debug message for when the enemy enters
+		#health = health - 10
+		print(health)
+		
+# Function called when a body exits the player's hitbox (e.g., enemy leaves detection range)
+func _on_hitbox_body_exited(body):
+	if body.is_in_group("Enemy"):
+		enemy_in_range = false # Set enemy detection flag to false
+		print("Enemy exited the hitbox!") # Debug message for when the enemy exits
+
+
+func _on_animated_sprite_2d_animation_finished():
+	if animated_sprite.animation == "die":
+		queue_free()
