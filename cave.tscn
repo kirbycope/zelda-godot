@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkr0nctvtrut2"]
+[gd_scene load_steps=15 format=3 uid="uid://bkr0nctvtrut2"]
 
 [ext_resource type="Texture2D" uid="uid://owbhdaw54oll" path="res://cave.png" id="1_a42qt"]
+[ext_resource type="Script" path="res://cave.gd" id="1_sg5nk"]
 [ext_resource type="Texture2D" uid="uid://6i6g70enawm6" path="res://8375_005.png" id="2_3iftc"]
 [ext_resource type="Texture2D" uid="uid://crplj3cfd6h0v" path="res://Legend of Zelda, The (USA) (Rev A)_001.png" id="3_clqr7"]
 [ext_resource type="PackedScene" uid="uid://dp4tkwatqwuos" path="res://player.tscn" id="4_rs58l"]
@@ -196,8 +197,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1n4c"]
+size = Vector2(33, 10)
+
 [node name="cave" type="Node2D"]
 position = Vector2(2, 4)
+script = ExtResource("1_sg5nk")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(-2, -4)
@@ -230,3 +235,11 @@ position = Vector2(126, 69)
 
 [node name="wooden_sword" parent="." instance=ExtResource("6_gga3v")]
 position = Vector2(125, 93)
+
+[node name="world" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world"]
+position = Vector2(125.5, 167)
+shape = SubResource("RectangleShape2D_b1n4c")
+
+[connection signal="body_entered" from="world" to="." method="_on_world_body_entered"]

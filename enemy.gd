@@ -89,7 +89,7 @@ func update_animation(direction, swooping=false):
 		return  
 		
 	if player_in_range and swooping:
-		animated_sprite.play("fight")
+		#animated_sprite.play("fight")
 		animated_sprite.flip_h = direction.x < 0
 		animated_sprite.flip_v = direction.y > 0
 		is_attacking = true  # Set the flag to true

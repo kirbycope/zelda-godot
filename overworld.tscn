@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://dkhu1av5f2cxx"]
+[gd_scene load_steps=24 format=3 uid="uid://dkhu1av5f2cxx"]
 
 [ext_resource type="Texture2D" uid="uid://c1f38huj8bau7" path="res://ZeldaOverworldMapQ1BG.png" id="1_a4xrf"]
+[ext_resource type="Script" path="res://overworld.gd" id="1_j2kgj"]
 [ext_resource type="Texture2D" uid="uid://d2jpsmjl48unn" path="res://8375_001.png" id="1_m5g04"]
 [ext_resource type="Texture2D" uid="uid://drv0xqsxhy3jo" path="res://dungeons.png" id="1_rep1l"]
 [ext_resource type="Texture2D" uid="uid://bfxl30bdu01op" path="res://8375_002.png" id="1_uxu04"]
@@ -1245,7 +1246,11 @@ sources/8 = SubResource("TileSetAtlasSource_js40y")
 sources/9 = SubResource("TileSetAtlasSource_uclce")
 sources/0 = SubResource("TileSetAtlasSource_wwx7f")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcciv"]
+size = Vector2(16, 16)
+
 [node name="overworld" type="Node2D"]
+script = ExtResource("1_j2kgj")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_bqaam")
@@ -1276,4 +1281,12 @@ stream = ExtResource("11_pbdl3")
 autoplay = true
 
 [node name="enemy" parent="." instance=ExtResource("12_s6xrf")]
-position = Vector2(1869, 1343)
+position = Vector2(1915, 1145)
+
+[node name="cave" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cave"]
+position = Vector2(1864, 1256)
+shape = SubResource("RectangleShape2D_qcciv")
+
+[connection signal="body_entered" from="cave" to="." method="_on_cave_body_entered"]
