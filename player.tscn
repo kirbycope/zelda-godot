@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://dp4tkwatqwuos"]
+[gd_scene load_steps=22 format=3 uid="uid://dp4tkwatqwuos"]
 
 [ext_resource type="Texture2D" uid="uid://ddlygcm8es2ld" path="res://8366_001.png" id="1_agof4"]
 [ext_resource type="Script" path="res://player.gd" id="1_kptyh"]
+[ext_resource type="AudioStream" uid="uid://d1syc3lqq6lvo" path="res://LOZ_Sword_Slash.wav" id="3_u8bpd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_js35l"]
 atlas = ExtResource("1_agof4")
@@ -198,6 +199,9 @@ offset_bottom = 18.0
 scale = Vector2(0.1, 0.1)
 fill_mode = 1
 show_percentage = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_u8bpd")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

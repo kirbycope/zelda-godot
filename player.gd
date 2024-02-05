@@ -80,6 +80,7 @@ func _input(event):
 	if event.is_action_pressed("ui_select"): # Assuming "ui_select" is mapped to the space bar
 		is_attacking = true
 		attack_timer = 0.0
+		$AudioStreamPlayer2D.play()
 
 func die():
 	if health <= 0 and not is_dead:
