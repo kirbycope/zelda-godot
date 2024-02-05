@@ -1,4 +1,4 @@
-extends CanvasLayer  # or Control, depending on your root node
+extends Node2D  # or Control, depending on your root node
 
 func _ready():
 	pass
