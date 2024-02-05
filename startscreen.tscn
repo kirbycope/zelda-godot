@@ -1,83 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://hvomg0rg5dar"]
+[gd_scene load_steps=4 format=3 uid="uid://hvomg0rg5dar"]
 
 [ext_resource type="Texture2D" uid="uid://bal1ekmomovde" path="res://Legend of Zelda, The (USA) (Rev A)_003.png" id="1_fcaw4"]
 [ext_resource type="Script" path="res://startscreen.gd" id="1_fkc5x"]
-[ext_resource type="Texture2D" uid="uid://6i6g70enawm6" path="res://8375_005.png" id="1_w7e41"]
 [ext_resource type="AudioStream" uid="uid://doeadrgnqqm0x" path="res://01 Title BGM (1).mp3" id="4_estft"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mjyt3"]
-texture = ExtResource("1_w7e41")
-separation = Vector2i(1, 1)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-7:0/0 = 0
-8:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-7:1/0 = 0
-8:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-7:2/0 = 0
-8:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-7:3/0 = 0
-8:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-7:4/0 = 0
-8:4/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_xkl50"]
-sources/0 = SubResource("TileSetAtlasSource_mjyt3")
 
 [node name="startscreen" type="Node2D"]
 script = ExtResource("1_fkc5x")
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_xkl50")
-format = 2
-layer_0/tile_data = PackedInt32Array(0, 524288, 3, 65536, 524288, 3, 131072, 524288, 3, 196608, 524288, 3, 262144, 524288, 3, 327680, 524288, 3, 393216, 524288, 3, 458752, 524288, 3, 524288, 524288, 3, 589824, 524288, 3, 655360, 524288, 3, 17, 524288, 3, 65553, 524288, 3, 131089, 524288, 3, 196625, 524288, 3, 262161, 524288, 3, 327697, 524288, 3, 393233, 524288, 3, 458769, 524288, 3, 524305, 524288, 3, 589841, 524288, 3, 655377, 524288, 3)
-
-[node name="TextureRect" type="Sprite2D" parent="."]
-position = Vector2(144, 88)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(128, 120)
 texture = ExtResource("1_fcaw4")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 116.0
-offset_top = 131.0
-offset_right = 162.0
-offset_bottom = 162.0
+[node name="start_button" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 147.0
+offset_right = 149.0
+offset_bottom = 178.0
 text = "Start"
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_estft")
 autoplay = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]
