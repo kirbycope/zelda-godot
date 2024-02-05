@@ -5,8 +5,10 @@ var current_scene = "cave"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	if Global.has_wooden_sword:
+		$dangerous.queue_free()
+		$man.queue_free()
+		$wooden_sword.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
