@@ -19,7 +19,6 @@ func change_scenes():
 		if current_scene == "cave":
 			get_tree().change_scene_to_file("res://overworld.tscn")
 
-
 func _on_world_body_entered(body):
 	if body.is_in_group("Player"):
 		change_scene = true

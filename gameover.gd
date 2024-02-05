@@ -1,4 +1,4 @@
-extends Node2D  # or Control, depending on your root node
+extends Node2D
 
 func _ready():
 	pass
