@@ -31,8 +31,8 @@ func _physics_process(delta):
 	
 func update_health():
 	var healthbar = $healthbar
-	healthbar.value = health
-	if health >= 100:
+	healthbar.value = Global.health
+	if Global.health >= 100:
 		healthbar.visible = false
 	else: 
 		healthbar.visible = true
@@ -83,7 +83,7 @@ func _input(event):
 		$AudioStreamPlayer2D.play()
 
 func die():
-	if health <= 0 and not is_dead:
+	if Global.health <= 0 and not is_dead:
 		is_dead = true
 		animated_sprite.play("die")
 
@@ -92,7 +92,7 @@ func _on_hitbox_body_entered(body):
 		enemy_in_range = true # Set enemy detection flag to true
 		print("Getting Swooped!") # Debug message for when the enemy enters
 		#health = health - 10
-		print(health)
+		print(Global.health)
 		
 # Function called when a body exits the player's hitbox (e.g., enemy leaves detection range)
 func _on_hitbox_body_exited(body):

@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq42m6qqdiw2d"]
+
+[ext_resource type="Script" path="res://inventory.gd" id="1_qn1ui"]
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_qn1ui")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot1" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 34.0
+offset_bottom = 34.0
+
+[node name="Slot1Image" type="TextureRect" parent="Control/Slot1"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 31.0
+
+[node name="Slot2" type="Button" parent="Control"]
+offset_left = 36.0
+offset_top = 2.0
+offset_right = 68.0
+offset_bottom = 34.0
+
+[node name="Slot2Image" type="TextureRect" parent="Control/Slot2"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 31.0
+
+[node name="Slot3" type="Button" parent="Control"]
+offset_left = 70.0
+offset_top = 2.0
+offset_right = 102.0
+offset_bottom = 34.0
+
+[node name="Slot3Image" type="TextureRect" parent="Control/Slot3"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 31.0
+
+[node name="Slot4" type="Button" parent="Control"]
+offset_left = 104.0
+offset_top = 2.0
+offset_right = 136.0
+offset_bottom = 34.0
+
+[node name="Slot4Image" type="TextureRect" parent="Control/Slot4"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 31.0
