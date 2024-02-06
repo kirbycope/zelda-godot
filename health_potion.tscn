@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dw8x5u3341g1o"]
+[gd_scene load_steps=4 format=3 uid="uid://i6ecatukuq7s"]
 
 [ext_resource type="Script" path="res://health_potion.gd" id="1_usykx"]
 [ext_resource type="Texture2D" uid="uid://cge12ikt1i21i" path="res://red_potion.png" id="2_k882x"]

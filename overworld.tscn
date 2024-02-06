@@ -11,13 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://6i6g70enawm6" path="res://8375_005.png" id="5_mkbf1"]
 [ext_resource type="Texture2D" uid="uid://cayf54bun4upk" path="res://Q1BG_001.png" id="6_msjba"]
 [ext_resource type="Texture2D" uid="uid://d2pfuiqlolb6r" path="res://Q1BG_002.png" id="7_pqjpd"]
-[ext_resource type="PackedScene" uid="uid://dq42m6qqdiw2d" path="res://inventory.tscn" id="11_fb31l"]
+[ext_resource type="PackedScene" uid="uid://dph6n2nurrjmb" path="res://inventory.tscn" id="11_fb31l"]
 [ext_resource type="AudioStream" uid="uid://ctgcdhamjf18" path="res://02 Overworld BGM.mp3" id="11_pbdl3"]
 [ext_resource type="PackedScene" uid="uid://o1yweho5vi5d" path="res://enemy.tscn" id="12_s6xrf"]
 [ext_resource type="PackedScene" uid="uid://d1i0qu2ish3ph" path="res://hud.tscn" id="14_ll4is"]
 [ext_resource type="PackedScene" uid="uid://cyanxmueraer5" path="res://steve.tscn" id="15_vhrrf"]
-[ext_resource type="PackedScene" uid="uid://dw8x5u3341g1o" path="res://health_potion.tscn" id="16_iw7jx"]
-[ext_resource type="PackedScene" uid="uid://bud2yc4n7pxnd" path="res://rupee.tscn" id="18_cf6hc"]
+[ext_resource type="PackedScene" uid="uid://i6ecatukuq7s" path="res://health_potion.tscn" id="16_iw7jx"]
+[ext_resource type="PackedScene" path="res://rupee.tscn" id="18_cf6hc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwx7f"]
 texture = ExtResource("1_rep1l")
@@ -1278,6 +1278,8 @@ limit_bottom = 1408
 
 [node name="Inventory" parent="TileMap/player" instance=ExtResource("11_fb31l")]
 
+[node name="hud" parent="TileMap/player" instance=ExtResource("14_ll4is")]
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(2048, 704)
@@ -1295,8 +1297,6 @@ position = Vector2(1915, 1145)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cave"]
 position = Vector2(1864, 1256)
 shape = SubResource("RectangleShape2D_qcciv")
-
-[node name="hud" parent="." instance=ExtResource("14_ll4is")]
 
 [node name="steve" parent="." instance=ExtResource("15_vhrrf")]
 position = Vector2(1879, 1308)
