@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dkhu1av5f2cxx"]
+[gd_scene load_steps=29 format=3 uid="uid://dkhu1av5f2cxx"]
 
 [ext_resource type="Texture2D" uid="uid://c1f38huj8bau7" path="res://ZeldaOverworldMapQ1BG.png" id="1_a4xrf"]
 [ext_resource type="Script" path="res://overworld.gd" id="1_j2kgj"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://d1i0qu2ish3ph" path="res://hud.tscn" id="14_ll4is"]
 [ext_resource type="PackedScene" uid="uid://cyanxmueraer5" path="res://steve.tscn" id="15_vhrrf"]
 [ext_resource type="PackedScene" uid="uid://dw8x5u3341g1o" path="res://health_potion.tscn" id="16_iw7jx"]
+[ext_resource type="PackedScene" uid="uid://bud2yc4n7pxnd" path="res://rupee.tscn" id="18_cf6hc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwx7f"]
 texture = ExtResource("1_rep1l")
@@ -1305,5 +1306,11 @@ position = Vector2(1848, 1309)
 
 [node name="health_potion2" parent="." instance=ExtResource("16_iw7jx")]
 position = Vector2(1880, 1344)
+
+[node name="rupee" parent="." instance=ExtResource("18_cf6hc")]
+position = Vector2(1892, 1281)
+
+[node name="rupee2" parent="." instance=ExtResource("18_cf6hc")]
+position = Vector2(1918, 1352)
 
 [connection signal="body_entered" from="cave" to="." method="_on_cave_body_entered"]
