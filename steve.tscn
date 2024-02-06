@@ -1,0 +1,82 @@
+[gd_scene load_steps=12 format=3 uid="uid://cyanxmueraer5"]
+
+[ext_resource type="Texture2D" uid="uid://dwryskqrti06c" path="res://joao-francisco-tanini-figueiredo-steve-minecraft-player-3.png" id="1_ykalm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdvi4"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(0, 0, 384, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbcqy"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(384, 0, 384, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5fp1"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(768, 0, 384, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tkhf"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(1152, 0, 384, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trmqd"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(1536, 0, 384, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etkv2"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(0, 435, 384, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4ylo"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(384, 435, 384, 435)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flvtf"]
+atlas = ExtResource("1_ykalm")
+region = Rect2(768, 435, 384, 435)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lcuh5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdvi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbcqy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5fp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tkhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trmqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etkv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4ylo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flvtf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sm6kr"]
+size = Vector2(15, 15)
+
+[node name="steve" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+sprite_frames = SubResource("SpriteFrames_lcuh5")
+autoplay = "default"
+frame_progress = 0.261933
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_sm6kr")
