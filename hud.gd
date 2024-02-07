@@ -13,3 +13,4 @@ func _process(delta):
 
 func show_wooden_sword():
 	$wooden_sword.visible = true
+ 

@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://d1i0qu2ish3ph" path="res://hud.tscn" id="14_ll4is"]
 [ext_resource type="PackedScene" uid="uid://cyanxmueraer5" path="res://steve.tscn" id="15_vhrrf"]
 [ext_resource type="PackedScene" uid="uid://i6ecatukuq7s" path="res://health_potion.tscn" id="16_iw7jx"]
-[ext_resource type="PackedScene" path="res://rupee.tscn" id="18_cf6hc"]
+[ext_resource type="PackedScene" uid="uid://611cy72537qe" path="res://rupee.tscn" id="18_cf6hc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwx7f"]
 texture = ExtResource("1_rep1l")
@@ -1276,9 +1276,9 @@ limit_top = 0
 limit_right = 4096
 limit_bottom = 1408
 
-[node name="Inventory" parent="TileMap/player" instance=ExtResource("11_fb31l")]
-
 [node name="hud" parent="TileMap/player" instance=ExtResource("14_ll4is")]
+
+[node name="Inventory" parent="TileMap/player" instance=ExtResource("11_fb31l")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
