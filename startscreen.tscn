@@ -11,15 +11,6 @@ script = ExtResource("1_fkc5x")
 position = Vector2(128, 120)
 texture = ExtResource("1_fcaw4")
 
-[node name="start_button" type="Button" parent="."]
-offset_left = 99.0
-offset_top = 147.0
-offset_right = 149.0
-offset_bottom = 178.0
-text = "Start"
-
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_estft")
 autoplay = true
-
-[connection signal="pressed" from="start_button" to="." method="_on_start_button_pressed"]

@@ -11,5 +11,6 @@ func _process(delta):
 	pass
 
 
-func _on_start_button_pressed():
-	get_tree().change_scene_to_file(("res://overworld.tscn"))
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		get_tree().change_scene_to_file(("res://overworld.tscn"))

@@ -1290,7 +1290,7 @@ stream = ExtResource("11_pbdl3")
 autoplay = true
 
 [node name="enemy" parent="." instance=ExtResource("12_s6xrf")]
-position = Vector2(1915, 1145)
+position = Vector2(1952, 1144)
 
 [node name="cave" type="Area2D" parent="."]
 
